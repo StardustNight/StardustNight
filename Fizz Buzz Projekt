@@ -1,0 +1,64 @@
+#Bedingte Anweisungen:
+#Für jede Zahl im Bereich 1 bis 100 wird überprüft ob sie durch drei oder vier teilbar ist,
+#Der Modulo Operator(%) wird verwendet, um Teilbarkeit zu überprüfen. Wenn eine Zahl durch eine andere teilbar ist, ist der Rest immer Null.
+
+def fizzbuzz(n):
+    for num in range(1, n + 1):
+        string = ""
+        if num % 3 == 0:
+            string += "Fizz"
+        if num % 4 == 0:
+            string += "Buzz"
+        if num % 4 != 0 and num % 3 != 0:
+            string += str(num)
+        print(string)
+
+fizzbuzz(100)
+#Diese Funktion gibt die Zahlen von 1 bis 100 aus und ersetzt die durch drei teilbaren Zahlen durch “Fizz” und die durch vier teilbaren Zahlen durch “Buzz”.
+
+
+#Zeichenverkettung:
+#Ähnlich zur Lösung mit bedingten Anweisungen kann man Zeichenketten verketten, um FizzBuzz zu erstellen.
+
+def fizzbuzz_string_concatenation(n):
+    for num in range(1, n + 1):
+        result = ""
+        if num % 3 == 0:
+            result += "Fizz"
+        if num % 4 == 0:
+            result += "Buzz"
+        if not result:
+            result = str(num)
+        print(result)
+
+fizzbuzz_string_concatenation(100)
+#Diese Funktion erzeugt denselben FizzBuzz-Output, verwendet jedoch Zeichenkettenverkettung anstelle von bedingten Anweisungen.
+
+
+#Itertools:
+#Eine weitere Möglichkeit besteht darin, die Python-Bibliothek itertools zu verwenden, um eine Liste von Bedingungen zu erstellen und diese zu kombinieren.
+
+from itertools import cycle
+
+def fizzbuzz_itertools(n):
+    conditions = ["Fizz", "", "", "Buzz"]
+    for num, condition in zip(range(1, n + 1), cycle(conditions)):
+        print(condition or num)
+
+fizzbuzz_itertools(100)
+#Hier wird itertools.cycle verwendet, um die Bedingungen “Fizz” und “Buzz” abwechselnd zu wiederholen.
+
+
+#Lambda- Funktion:
+#Wir können eine Lambda-Funktion verwenden, um FizzBuzz zu erstellen.
+
+fizzbuzz_lambda = lambda num: "Fizz" * (num % 3 == 0) + "Buzz" * (num % 4 == 0) or str(num)
+for i in range(1, 101):
+    print(fizzbuzz_lambda(i))
+#Diese kurze Lambda-Funktion kombiniert die Bedingungen für “Fizz” und “Buzz”.
+
+
+
+
+
+
